@@ -2,10 +2,7 @@ package com.example.board.configuration;
 
 import java.nio.charset.Charset;
 
-import javax.persistence.Cache;
-
 import com.example.board.interceptor.LoggerInterceptor;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
