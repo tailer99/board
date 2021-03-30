@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="true" scan="true" scanPeriod="1 minutes">
+    
+    <property resource="log.properties"/>
+
+    <!-- Appenders -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d %5p [%c] %m%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d %5p %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${destination}</file>
+        <encoder>
+            <pattern>%d %level [%c] %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/logback.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/logback.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+
+    <logger name="com.example.board" level="DEBUG" appender-ref="ROLLING"/>
+    <logger name="com.mysql" level="INFO" appender-ref="ROLLING"/>
+    <logger name="jdbc.sqltiming" level="INFO" appender-ref="ROLLING"/>
+    <logger name="jdbc.resultsettable" level="INFO" appender-ref="ROLLING"/>
+    <logger name="jdbc.connection" level="ERROR" appender-ref="ROLLING"/>
+ 
+    <root level="off">
+        <appender-ref ref="console"/>
+        <appender-ref ref="ROLLING"/>
+    </root>
+    
+</configuration>

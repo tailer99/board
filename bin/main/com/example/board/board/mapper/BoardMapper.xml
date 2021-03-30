@@ -19,7 +19,7 @@
         ]]>
     </insert>
 
-    <update id="updatgeHitCount" parameterType="int">
+    <update id="updateHitCount" parameterType="int">
         <![CDATA[
             UPDATE t_board
             SET    hit_cnt = hit_cnt + 1

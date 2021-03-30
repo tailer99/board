@@ -1,6 +1,8 @@
 ### Java-Web ###
 ## ignoring target file
 target/
+bin/
+build/
 
 ### vscode ###
 .vscode/*
@@ -9,3 +11,8 @@ target/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+.gradle/*
+
+## log
+*.log

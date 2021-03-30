@@ -25,19 +25,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public BoardDto selectBoardDetail(int boardIdx){
-        try {
-            boardMapper.updateHitCount(boardIdx);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        BoardDto board=null;
-        try {
-            board = boardMapper.selectBoardDetail(boardIdx);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public BoardDto selectBoardDetail(int boardIdx) throws Exception{
+        
+        boardMapper.updateHitCount(boardIdx);
+        
+        BoardDto board = boardMapper.selectBoardDetail(boardIdx);
         return board;
     }
 
